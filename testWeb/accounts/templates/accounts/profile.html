@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Profile
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Welcome, {{ user.username }}!</h5>
+        <p class="card-text">Email: {{ user.email }}</p>
+        <p class="card-text">First name: {{ user.first_name }}</p>
+        <p class="card-text">Last name: {{ user.last_name }}</p>
+        <p class="card-text">Bio: {{ profile.bio }}</p>
+        <p class="card-text">Location: {{ profile.location }}</p>
+        <form method="post" action="{% url 'edit_profile' %}">
+            {% csrf_token %}
+            <button type="submit">Edit Profile</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
